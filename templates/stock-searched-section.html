@@ -1,0 +1,41 @@
+<section id="stock-searched-section">
+    <h2>View Stock</h2>
+    <div class="search-container">
+        <form id="search-stock-form" action="/search_stock" method="GET">
+            <input type="text" name="query" placeholder="Search by product ID or name...">
+            <button type="submit">Search</button>
+        </form>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Product ID</th>
+                <th>Product Name</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if searched_product %}
+            <tr>
+                <td>{{ searched_product.id }}</td>
+                <td>{{ searched_product.name }}</td>
+                <td>{{ searched_stock.quantity if searched_stock else 'N/A' }}</td>
+                <td>{{ searched_product.price }}</td>
+                <td>
+                    <form action="{{ url_for('edit_stock', product_id=searched_product.id) }}" method="GET">
+                        <button type="submit" class="edit-button">Edit</button>
+                    </form>
+                    <form id="delete-form-{{ searched_product.id }}" action="/delete_stock/{{ searched_product.id }}"
+                        method="post">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <button type="button" class="delete-button"
+                            onclick="confirmDelete('{{ searched_product.name }}', '{{ searched_product.id }}')">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% endif %}
+        </tbody>
+    </table>
+</section>

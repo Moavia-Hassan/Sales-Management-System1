@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statistical Analysis</title>
+    <style>
+        .graph-container {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Statistical Analysis</h1>
+
+    <div class="graph-container">
+        <h2>Orders Statistical Analysis</h2>
+        <div id="orders-graph">
+        </div>
+    </div>
+
+    <div class="graph-container">
+        <h2>Products Statistical Analysis</h2>
+        <div id="products-graph">
+        </div>
+    </div>
+
+    <div class="graph-container">
+        <h2>Stocks Statistical Analysis</h2>
+        <div id="stocks-graph">
+        </div>
+    </div>
+
+    <div>
+        <h2>Average Calculation</h2>
+        <p>Calculate average:</p>
+        <form action="/calculate_average" method="POST">
+            <label for="data">Data:</label>
+            <input type="text" id="data" name="data" placeholder="Enter data separated by comma">
+            <button type="submit">Calculate</button>
+        </form>
+        <div id="average-result">
+        </div>
+    </div>
+
+</body>
+</html>
